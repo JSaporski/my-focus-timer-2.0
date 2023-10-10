@@ -1,0 +1,124 @@
+/* General Styles */
+:root {
+  font-size: clamp(30%, calc(2vw + 1%), 62.5%);
+
+  /* Colors */
+  --accent-color: hsl(194, 97%, 31%);
+  --text-and-icon-color: hsl(240, 6%, 21%);
+  --bg-cards-color: hsl(240, 9%, 89%);
+  --white: hsl(255, 100%, 100%);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.6rem;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* Utilities */
+.flex {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.sr-only {
+  position: absolute;
+  overflow: hidden;
+  width: 0.1rem;
+  height: 0.1rem;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+}
+
+/* App */
+#app {
+  align-items: center;
+  gap: 19.2rem;
+  margin: 6rem;
+}
+
+#app .timer {
+  justify-content: center;
+  margin-bottom: 1.8rem;
+  font-size: 12.6rem;
+  color: var(--text-and-icon-color);
+}
+
+#app main .controls {
+  justify-content: space-between;
+}
+
+#app .controls button {
+  width: 4.8rem;
+  height: 4.8rem;
+}
+
+#app .controls svg {
+  pointer-events: none;
+}
+
+#app .controls button svg path {
+  transition: 0.3s ease-out;
+}
+
+#app .controls button:hover svg path,
+#app .controls button.active svg path {
+  fill: var(--accent-color);
+}
+
+#app .ambient-sounds {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 3.2rem;
+}
+
+#app .ambient-sounds .sound {
+  display: grid;
+  place-items: center;
+  width: 13.8rem;
+  height: 15.2rem;
+  background-color: var(--bg-cards-color);
+  border-radius: 2.4rem;
+  transition: 0.3s ease-out;
+}
+
+#app .ambient-sounds .sound:hover,
+#app .ambient-sounds .sound.active {
+  background-color: var(--accent-color);
+}
+
+#app .ambient-sounds .sound svg path {
+  transition: 0.3s ease-out;
+}
+
+#app .ambient-sounds .sound:hover svg path,
+#app .ambient-sounds .sound.active svg path {
+  fill: var(--white);
+}
+
+@media only screen and (max-width: 939px) {
+  #app {
+    justify-content: center;
+    gap: 9.6rem;
+  }
+}
