@@ -1,5 +1,5 @@
 import state from './state.js'
-import { registerControls, changeColor, playSounds } from './events.js'
+import { registerControls, changeColor, toggleSounds } from './events.js'
 import { updateDisplay } from './timer.js'
 
 export function start(minutes, seconds) {
@@ -9,5 +9,5 @@ export function start(minutes, seconds) {
   registerControls()
   changeColor()
   updateDisplay()
-  playSounds()
+  toggleSounds()
 }

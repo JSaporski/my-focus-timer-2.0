@@ -27,16 +27,6 @@ export function changeColor() {
     })
   })
 
-  el.btnsSounds.forEach((btns, index) => {
-    btns.addEventListener('click', () => {
-      el.btnsSounds.forEach(btns => {
-        btns.classList.remove('active')
-      })
-
-      el.btnsSounds[index].classList.add('active')
-    })
-  })
-
   el.btnsAddRemoveMinutes.forEach(btns => {
     btns.addEventListener('click', () => {
       el.btnPlay.classList.remove('active')
@@ -63,17 +53,27 @@ export function removeFiveMinutes() {
   }
 }
 
-export function playSounds() {
+export function toggleSounds() {
   el.btnsSounds.forEach((btns, index) => {
-    btns.addEventListener('click', () => {
-      sounds.allSounds.forEach(sound => {
-        sound.pause()
-      })
-
-      sounds.allSounds[index].play()
-    })
-
     const actualSound = sounds.allSounds[index]
+
+    btns.addEventListener('click', () => {
+      if (actualSound.paused) {
+        sounds.allSounds.forEach(sound => {
+          sound.pause()
+        })
+
+        el.btnsSounds.forEach(btns => {
+          btns.classList.remove('active')
+        })
+
+        actualSound.play()
+        btns.classList.add('active')
+      } else {
+        actualSound.pause()
+        btns.classList.remove('active')
+      }
+    })
 
     actualSound.addEventListener('timeupdate', () => {
       const isCurrentTimeEqualToDuration =
