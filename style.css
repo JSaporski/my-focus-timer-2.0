@@ -1,12 +1,44 @@
 /* General Styles */
 :root {
-  font-size: clamp(30%, calc(2vw + 1%), 62.5%);
+  font-size: clamp(30%, calc(1.4vw + 1%), 62.5%);
 
   /* Colors */
   --accent-color: hsl(194, 97%, 31%);
   --text-and-icon-color: hsl(240, 6%, 21%);
   --bg-cards-color: hsl(240, 9%, 89%);
+  --bg-color: hsl(255, 100%, 100%);
   --white: hsl(255, 100%, 100%);
+}
+
+:root.toggle-mode {
+  --accent-color: hsl(194, 100%, 63%);
+  --text-and-icon-color: hsl(240, 40%, 98%);
+  --bg-cards-color: hsl(0, 0%, 14%);
+  --bg-color: hsl(240, 5%, 7%);
+}
+
+:root.toggle-mode .controls svg path,
+:root.toggle-mode .ambient-sounds svg path {
+  fill: var(--white);
+}
+
+.btn-toggle-mode svg.sun-icon,
+:root.toggle-mode .btn-toggle-mode svg.moon-icon {
+  display: none;
+}
+
+:root.toggle-mode .btn-toggle-mode svg.sun-icon {
+  display: block;
+}
+
+.btn-toggle-mode {
+  position: absolute;
+  top: 3.2rem;
+  right: 3.2rem;
+}
+
+.btn-toggle-mode svg {
+  width: 5.2rem;
 }
 
 * {
@@ -21,6 +53,8 @@ body {
   place-items: center;
   font-family: 'Roboto', sans-serif;
   font-size: 1.6rem;
+  background-color: var(--bg-color);
+  transition: background-color 0.3s ease-out;
 }
 
 img,
@@ -62,6 +96,7 @@ button {
   margin-bottom: 1.8rem;
   font-size: 12.6rem;
   color: var(--text-and-icon-color);
+  transition: color 0.3s ease-out;
 }
 
 #app main .controls {
@@ -105,6 +140,10 @@ button {
 #app .ambient-sounds .sound:hover,
 #app .ambient-sounds .sound.active {
   background-color: var(--accent-color);
+}
+
+#app .ambient-sounds .sound svg {
+  width: 5.2rem;
 }
 
 #app .ambient-sounds .sound svg path {
